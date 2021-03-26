@@ -7,29 +7,23 @@
 <div class="container-fluid">
     <h1 class="display-4 text-center">BOOKlist 2021</h1>
 </div>
+<div th:replace="fragments:: nav-bar"></div>
 
     <table class="table table-striped mt-5">
-
-        <tr>
-            <th>TITLE</th>
-            <th>AUTHOR</th>
-            <th>CATEGORY</th>
-            <th></th>
-        </tr>
-
-<!--        <th:block >-->
-            <tr th:each="book : ${bookList}">
-                <td th:text="${book.title}"></td>
-                <td th:text="${book.author}"></td>
-<!--                <td th:text="${book.category}"></td>-->
+        <thead>
+            <tr>
+                <th>TITLE</th>
+                <th>AUTHOR</th>
+                <th>CATEGORY</th>
+                <th></th>
             </tr>
-<!--        </th:block>-->
+        </thead>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.category.name}"></td>
+        </tr>
     </table>
-
-
-
-
-
 
 </body>
 

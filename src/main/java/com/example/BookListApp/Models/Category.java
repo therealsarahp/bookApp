@@ -1,7 +1,9 @@
 package com.example.BookListApp.Models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,8 @@ public class Category extends AbstractEntity{
     @NotBlank(message = "Name is required")
     private String name;
 
-    @ManyToOne
+    @OneToMany
+    @JoinColumn(name="category_id")
     private static List<Book> books = new ArrayList<>();
 
     public Category(String name) {

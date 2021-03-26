@@ -7,6 +7,8 @@
 <div class="container-fluid">
     <h1 class="display-4 text-center">Add A Book</h1>
 </div>
+<div th:replace="fragments:: nav-bar"></div>
+
 
 <div class="container mt-4">
     <form id="book-form" method="post">
@@ -26,7 +28,7 @@
         <div class="form-group form-check" id="category-list">
             <label th:for="category">CATEGORY</label><br>
             <th:block th:each="category : ${categories}">
-                <input type="checkbox" name="categories" th:value="{category.id}">
+                <input type="checkbox" name="category" th:value="${category.id}">
                 <label th:text="${category.name}"></label>
             </th:block>
         </div>

@@ -27,17 +27,18 @@ public class HomeController {
     private CategoryRepository categoryRepository;
 
 
-    @GetMapping("index")
+    @GetMapping("")
     public String displayBookList(Model model){
-        model.addAttribute("bookList", bookRepository.findAll());
+        model.addAttribute("books", bookRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
-        model.addAttribute("book", new Book());
-        return "redirect: ";
+//        model.addAttribute("book", new Book("Barbara" ,"fakeAuthor"));
+        return "index";
     }
 
     @GetMapping("addBook")
     public String viewAddBookForm(Model model){
         model.addAttribute(new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addBook";
     }
 
@@ -48,6 +49,23 @@ public class HomeController {
             return "addBook";
         } else{
             model.addAttribute(bookRepository.save(newBook));
+        }
+        return "redirect: ";
+    }
+
+    @GetMapping("addCategory")
+    public String viewAddCategoryForm(Model model){
+        model.addAttribute(new Category());
+        return "addCategory";
+    }
+
+    @PostMapping("addCategory")
+    public String processAddCategoryForm(@ModelAttribute @Valid Category newCategory, Model model,
+                                         Errors errors){
+        if(errors.hasErrors()){
+            return "addCategory";
+        } else{
+            model.addAttribute(categoryRepository.save(newCategory));
         }
         return "redirect: ";
     }

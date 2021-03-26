@@ -15,9 +15,9 @@ public class Book extends AbstractEntity{
     @NotBlank(message="Author is Required")
     private String author;
 
-    @OneToMany
-    @JoinColumn(name="category_id")
-    private List<Category> categories= new ArrayList<>();
+    @ManyToOne
+//    @JoinColumn(name="category_id")
+    private Category category;
 
     public Book(String title, String author) {
         this.title = title;
@@ -42,11 +42,11 @@ public class Book extends AbstractEntity{
         this.author = author;
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
