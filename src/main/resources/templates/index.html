@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<div class="container-fluid">
+    <h1 class="display-4 text-center">BOOKlist 2021</h1>
+</div>
+
+    <table class="table table-striped mt-5">
+
+        <tr>
+            <th>TITLE</th>
+            <th>AUTHOR</th>
+            <th>CATEGORY</th>
+            <th></th>
+        </tr>
+
+<!--        <th:block >-->
+            <tr th:each="book : ${bookList}">
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+<!--                <td th:text="${book.category}"></td>-->
+            </tr>
+<!--        </th:block>-->
+    </table>
+
+
+
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-center">Add A Book</h1>
+</div>
+
+<div class="container mt-4">
+    <form id="book-form" method="post">
+
+        <div class="form-group">
+            <label>TITLE
+                <input th:field="${book.title}" class="form-control">
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>AUTHOR
+                <input type="text" th:field="${book.author}" class="form-control">
+            </label>
+        </div>
+
+        <div class="form-group form-check" id="category-list">
+            <label th:for="category">CATEGORY</label><br>
+            <th:block th:each="category : ${categories}">
+                <input type="checkbox" name="categories" th:value="{category.id}">
+                <label th:text="${category.name}"></label>
+            </th:block>
+        </div>
+        <!-- //Later updates to work it as a table/multiple columns with more category options? -->
+
+        <input type="submit" value="ADD BOOK" class="btn btn-primary btn-block">
+
+    </form>
+</div>
+
+
+</body>
+</html>
