@@ -13,7 +13,7 @@ public class Author extends AbstractEntity{
     private String name;
 
     @OneToMany
-    @JoinColumn(name="author_id")
+    @JoinColumn(name="book_id")
     private static List<Book> books = new ArrayList<>();
 
     public Author(String name) {

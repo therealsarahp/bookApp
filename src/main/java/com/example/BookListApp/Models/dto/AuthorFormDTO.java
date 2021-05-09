@@ -17,10 +17,6 @@ public class AuthorFormDTO {
     @NotBlank
     private String name;
 
-    @OneToMany
-    @JoinColumn(name="author_id")
-    private static List<Book> books = new ArrayList<>();
-
     public String getName() {
         return name;
     }
@@ -29,11 +25,4 @@ public class AuthorFormDTO {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
 }

@@ -3,23 +3,29 @@ package com.example.BookListApp.Models;
 import javax.persistence.*;
 import javax.validation.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Book extends AbstractEntity{
 
-    @NotBlank(message="Title Is Required")
+    @NotNull(message="title is required")
+    @NotBlank(message="title is required")
+    @Size(min = 3, max = 240, message = "Invalid Title")
     private String title;
 
 
-    @NotBlank(message="Author is Required")
+    @NotNull(message="Author is Required")
     @ManyToOne
+    @JoinColumn(name="author_id")
     private Author author;
 
     @ManyToOne
 //    @JoinColumn(name="category_id")
     private Category category;
+
 
     public Book(String title, Author author) {
         this.title = title;

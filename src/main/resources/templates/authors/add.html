@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments:: head"></head>
+<body>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-center">Add An Author</h1>
+</div>
+<div th:replace="fragments:: nav-bar"></div>
+
+
+<div class="container mt-4">
+    <form id="author-form" method="post">
+
+        <div class="form-group">
+            <label>AUTHOR'S NAME
+                <input th:field="${authorFormDTO.name}" class="form-control">
+            </label>
+            <p class="error" th:errors="${categoryFormDTO.name}"></p>
+
+        </div>
+
+        <input type="submit" value="ADD CATEGORY" class="btn btn-primary btn-block">
+
+    </form>
+</div>
+
+</body>
+</html>

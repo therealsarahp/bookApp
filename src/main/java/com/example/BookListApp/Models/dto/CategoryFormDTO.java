@@ -17,10 +17,6 @@ public class CategoryFormDTO {
     @NotBlank(message = "Name is required")
     private String name;
 
-    @OneToMany
-    @JoinColumn(name="category_id")
-    private static List<Book> books = new ArrayList<>();
-
     public String getName() {
         return name;
     }
@@ -29,12 +25,5 @@ public class CategoryFormDTO {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
 
 }
