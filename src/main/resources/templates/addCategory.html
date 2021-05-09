@@ -14,8 +14,10 @@
 
         <div class="form-group">
             <label>NAME OF CATEGORY
-                <input th:field="${category.name}" class="form-control">
+                <input th:field="${categoryFormDTO.name}" class="form-control">
             </label>
+            <p class="error" th:errors="${categoryFormDTO.name}"></p>
+
         </div>
 
         <input type="submit" value="ADD CATEGORY" class="btn btn-primary btn-block">

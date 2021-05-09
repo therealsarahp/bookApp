@@ -15,14 +15,16 @@
 
         <div class="form-group">
             <label>TITLE
-                <input th:field="${book.title}" class="form-control">
+                <input th:field="${bookFormDTO.title}" class="form-control">
             </label>
+            <p class="error" th:errors="${bookFormDTO.title}"></p>
         </div>
 
         <div class="form-group">
             <label>AUTHOR
-                <input type="text" th:field="${book.author}" class="form-control">
+                <input type="text" th:field="${bookFormDTO.author}" class="form-control">
             </label>
+            <p class="error" th:errors="${bookFormDTO.author}"></p>
         </div>
 
         <div class="form-group form-check" id="category-list">

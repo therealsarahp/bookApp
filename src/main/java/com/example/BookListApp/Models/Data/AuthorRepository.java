@@ -1,11 +1,12 @@
 package com.example.BookListApp.Models.Data;
 
-import com.example.BookListApp.Models.Book;
+import com.example.BookListApp.Models.Author;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BookRepository extends CrudRepository <Book, Integer>{
+public interface AuthorRepository extends CrudRepository<Author, Integer> {
 
-    Book findByTitle(String title);
+    Author findByName(String name);
+
 }

@@ -1,32 +1,27 @@
-package com.example.BookListApp.Models;
+package com.example.BookListApp.Models.dto;
 
-import javax.persistence.*;
-import javax.validation.*;
+import com.example.BookListApp.Models.Author;
+import com.example.BookListApp.Models.Category;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
-public class Book extends AbstractEntity{
+public class BookFormDTO {
 
-    @NotBlank(message="Title Is Required")
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 240, message = "Invalid Title")
     private String title;
 
-
     @NotBlank(message="Author is Required")
-    @ManyToOne
+    @OneToMany
+    @JoinColumn(name="author_id")
     private Author author;
 
-    @ManyToOne
-//    @JoinColumn(name="category_id")
     private Category category;
-
-    public Book(String title, Author author) {
-        this.title = title;
-        this.author = author;
-    }
-
-    public Book(){}
 
     public String getTitle() {
         return title;
