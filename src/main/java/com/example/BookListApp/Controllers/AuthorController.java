@@ -59,7 +59,7 @@ public class AuthorController {
         Optional<Author> result = authorRepository.findById(authorId);
         if (result.isPresent()) {
             Author author = result.get();
-            model.addAttribute("Author", author);
+            model.addAttribute("author", author);
             return "authors/view";
         } else {
             return "redirect../";
@@ -70,7 +70,7 @@ public class AuthorController {
     @GetMapping
     public String displayAllAuthors(Model model){
         model.addAttribute("title", "All Authors");
-        model.addAttribute("employers", authorRepository.findAll());
+        model.addAttribute("authors", authorRepository.findAll());
         return "authors/index";
     }
 

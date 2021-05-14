@@ -37,6 +37,9 @@ public class BookController {
     @PostMapping("add")
     public String processAddBookForm(@ModelAttribute @Valid BookFormDTO bookFormDTO, Model model,
                                      Errors errors){
+
+        model.addAttribute("authors", authorRepository.findAll());
+        model.addAttribute("categories", categoryRepository.findAll());
         if(errors.hasErrors()){
             return "books/add";
         }
@@ -61,7 +64,7 @@ public class BookController {
             model.addAttribute("book", book);
             return "books/view";
         } else {
-            return "redirect../";
+            return "books/index";
         }
 
     }
@@ -69,7 +72,7 @@ public class BookController {
     @GetMapping
     public String displayAllBooks(Model model){
         model.addAttribute("title", "All Books");
-        model.addAttribute("employers", bookRepository.findAll());
+        model.addAttribute("books", bookRepository.findAll());
         return "books/index";
     }
 }

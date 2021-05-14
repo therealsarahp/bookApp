@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments:: head"></head>
+
+<body>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-center"
+        th:text="${'Category: ' + category.name}">Default</h1>
+</div>
+
+<div th:replace="fragments:: nav-bar"></div>
+
+<div class="categories-listing">
+    <p th:text="${'Category: ' + category.name}"></p>
+<!--//should cateogry have a description???-->
+        <ul>
+            <li th:each="book : ${category.books}">
+                <a th:href="@{'/view/' + ${book.id}}" th:text="${book.name}"></a>
+            </li>
+        </ul>
+
+</div>
+
+
+</body>
+</html>

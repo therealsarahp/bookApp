@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments:: head"></head>
+
+<body>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-center"
+    th:text="${'Book: ' + book.name}">Default</h1>
+</div>
+
+<div th:replace="fragments:: nav-bar"></div>
+
+<div class="books-listings">
+    <p th:text="${'Title: ' + book.name}"></p>
+    <p th:text="${'Author: ' + book.author.name}"></p>
+    <p th:text="${'Categori: ' + book.category.name}"></p>
+<!--    <ul>-->
+<!--        <li th:each="book : ${skill.jobs}">-->
+<!--            <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>-->
+<!--        </li>-->
+<!--    </ul>-->
+
+</div>
+
+
+</body>
+</html>

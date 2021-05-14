@@ -6,9 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface BookListRepository extends CrudRepository<BookLists, Integer> {
 
-    User findByUser(String name);
+//    List findByUsername(User.findByUsername(String name));
 
     BookLists findByName(String name);
-
 
 }

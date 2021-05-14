@@ -20,10 +20,16 @@
             <p class="error" th:errors="${bookFormDTO.title}"></p>
         </div>
 
-        <div class="form-group">
-            <label>AUTHOR
-                <input type="text" th:field="${bookFormDTO.author}" class="form-control">
-            </label>
+        <div class="form-group form-select">
+            <label th:for="${bookFormDTO.author}">AUTHOR</label>
+                <th:block th:each="author : ${authors}">
+                    <select name="${bookFormDTO.author}">
+                        <option th:text="${author.name}"
+                                th:value="${author.id}">
+                        </option>
+                    </select>
+                </th:block>
+<!--                <input type="text" th:field="${bookFormDTO.author}" class="form-control">-->
             <p class="error" th:errors="${bookFormDTO.author}"></p>
         </div>
 

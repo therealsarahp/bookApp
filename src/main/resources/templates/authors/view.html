@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments:: head"></head>
+
+<body>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-center"
+        th:text="${'Author: ' + author.name}">Default</h1>
+</div>
+
+<div th:replace="fragments:: nav-bar"></div>
+
+<div class="authors-listing">
+    <p th:text="${'Author: ' + author.name}"></p>
+    <!--//should author be firstname and lastname as two seperate values??-->
+    <ul>
+        <li th:each="book : ${author.books}">
+            <a th:href="@{'/view/' + ${book.id}}" th:text="${book.name}"></a>
+        </li>
+    </ul>
+
+</div>
+
+
+</body>
+</html>

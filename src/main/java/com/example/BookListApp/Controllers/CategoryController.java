@@ -34,7 +34,7 @@ public class CategoryController {
         if(errors.hasErrors()){
             return "categories/add";
         }
-        Category existingCategory = new Category(categoryFormDTO.getName());
+        Category existingCategory = categoryRepository.findByName(categoryFormDTO.getName());
 
         if(existingCategory!= null){
             errors.rejectValue("name", "category.alreadyexists", "A Category with that Name Already Exists." );
@@ -53,18 +53,18 @@ public class CategoryController {
         Optional<Category> result = categoryRepository.findById(categoryId);
         if (result.isPresent()) {
             Category category = result.get();
-            model.addAttribute("Category", category);
+            model.addAttribute("category", category);
             return "categories/view";
         } else {
-            return "redirect../";
+            return "redirect: ";
         }
 
     }
 
     @GetMapping
-    public String displayAllAuthors(Model model){
+    public String displayAllCategories(Model model){
         model.addAttribute("title", "All Categories");
-        model.addAttribute("employers", categoryRepository.findAll());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "categories/index";
     }
 
