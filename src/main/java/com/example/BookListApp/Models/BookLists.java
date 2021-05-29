@@ -17,9 +17,9 @@ public class BookLists extends AbstractEntity{
     @ManyToOne
     private static List<Book> lists = new ArrayList<>();
 
-    @ManyToMany
-    @JoinColumn(name="user_id")
-    private static List<User> users= new ArrayList<>();
+    @ManyToOne
+//    @JoinColumn(name="user_id")
+    private User user;
 
     public BookLists(String name) {
         this.name = name;
@@ -43,11 +43,18 @@ public class BookLists extends AbstractEntity{
         BookLists.lists = lists;
     }
 
-    public static List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public static void setUsers(List<User> users) {
-        BookLists.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
+//    public static List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public static void setUsers(List<User> users) {
+//        BookLists.users = users;
+//    }
 }

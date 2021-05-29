@@ -9,5 +9,6 @@ public interface BookListRepository extends CrudRepository<BookLists, Integer> {
 //    List findByUsername(User.findByUsername(String name));
 
     BookLists findByName(String name);
+    BookLists findByUser(User user_id);
 
 }

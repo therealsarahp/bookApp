@@ -5,10 +5,16 @@
 <body>
 
 <div class="container-fluid">
-    <h1 class="display-4 text-center" th:text="${"></h1>
+    <h1 class="display-4 text-center" th:text="${username}+', Welcome!'"></h1>
 </div>
 <div th:replace="fragments:: nav-bar"></div>
 
+<table class="table table-striped mt-5">
+    <tr th:each="bookList : ${bookLists}">
+        <td th:text="${booklist.name}"></td>
+
+
+</table>
 
 
 </body>
