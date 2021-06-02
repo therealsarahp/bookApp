@@ -6,15 +6,15 @@
 
 <div class="container-fluid">
     <h1 class="display-4 text-center"
-    th:text="${'Book: ' + book.name}">Default</h1>
+    th:text="${'Book: ' + book.title}">Default</h1>
 </div>
 
 <div th:replace="fragments:: nav-bar"></div>
 
 <div class="books-listings">
-    <p th:text="${'Title: ' + book.name}"></p>
+    <p th:text="${'Title: ' + book.title}"></p>
     <p th:text="${'Author: ' + book.author.name}"></p>
-    <p th:text="${'Categori: ' + book.category.name}"></p>
+    <p th:unless="${book.category==null}" th:text="${'Category: ' + book.category.name}"></p>
 <!--    <ul>-->
 <!--        <li th:each="book : ${skill.jobs}">-->
 <!--            <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>-->

@@ -26,6 +26,10 @@ public class Book extends AbstractEntity{
 //    @JoinColumn(name="category_id")
     private Category category;
 
+    @ManyToMany
+    @JoinColumn(name= "booklists_id")
+    private List<BookLists> listsOfLists= new ArrayList<>();
+
 
     public Book(String title, Author author) {
         this.title = title;
@@ -56,5 +60,13 @@ public class Book extends AbstractEntity{
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<BookLists> getListsOfLists() {
+        return listsOfLists;
+    }
+
+    public void setListsOfLists(List<BookLists> listsOfLists) {
+        this.listsOfLists = listsOfLists;
     }
 }

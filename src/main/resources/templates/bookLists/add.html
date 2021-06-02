@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-center">Make A List</h1>
+</div>
+<div th:replace="fragments:: nav-bar"></div>
+
+<div class="container mt-4">
+    <form id="bookList-form" method="post">
+
+        <div class="form-group">
+            <label>List Name
+                <input th:field="${bookList.name}" class="form-control">
+            </label>
+            <p class="error" th:errors="${bookList.name}"></p>
+        </div>
+
+    </form>
+</div>
+
+//this needs to post and then redirect to an add books page that uses the booklist id (request param)to add/delete books
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.example.BookListApp.Controllers;
 
+import com.example.BookListApp.Models.Author;
 import com.example.BookListApp.Models.Book;
 import com.example.BookListApp.Models.Data.AuthorRepository;
 import com.example.BookListApp.Models.Data.BookRepository;
@@ -31,25 +32,24 @@ public class BookController {
     public String viewAddBookForm(Model model){
         model.addAttribute(new BookFormDTO());
         model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("authors", authorRepository.findAll());
         return "books/add";
     }
 
     @PostMapping("add")
     public String processAddBookForm(@ModelAttribute @Valid BookFormDTO bookFormDTO, Model model,
                                      Errors errors){
-
-        model.addAttribute("authors", authorRepository.findAll());
-        model.addAttribute("categories", categoryRepository.findAll());
         if(errors.hasErrors()){
             return "books/add";
         }
         Book existingBook = bookRepository.findByTitle(bookFormDTO.getTitle());
 
-        if(existingBook != null){
+        if(existingBook != null) {
             errors.rejectValue("title", "title.alreadyexists", "A book with that title already exists.");
             return "books/add";
         } else{
             Book newBook = new Book(bookFormDTO.getTitle(), bookFormDTO.getAuthor());
+//            newBook.setCategory(bookFormDTO.getCategory());
             bookRepository.save(newBook);
             return "redirect:";
 

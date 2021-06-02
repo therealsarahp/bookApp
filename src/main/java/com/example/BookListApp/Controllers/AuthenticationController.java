@@ -120,12 +120,13 @@ public class AuthenticationController {
 
         if (!theUser.isMatchingPassword(password)){
             errors.rejectValue("password", "password.invalid", "Invalid password");
+
             return "login";
         }
 
 //        request.getSession().setAttribute("username", theUser);
         setUserInSession(request.getSession(), theUser);
-        return "userHome";
+        return "redirect:index";
 
     }
 

@@ -52,26 +52,17 @@ public class HomeController {
 
     @GetMapping("")
     public String displayBookList(Model model, HttpServletRequest request, HttpServletResponse response){
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        model.addAttribute("user", user);
         model.addAttribute("books", bookRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
-        return "index";
+        return "";
     }
-
-    @GetMapping("userHome")
-    public String displayUserHomePage(Model model, HttpServletRequest request, HttpServletResponse response){
-//            HttpSession session = request.getSession();
-//        Integer userId= (Integer)session.getAttribute("user");
-//        Optional<User> user = userRepository.findById(userId);
-        String username = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest().getParameter("username");
-        User user= userRepository.findByUsername(username);
-        model.addAttribute("username", username);
-//            model.addAttribute("bookLists", bookListRepository.findByUser(user));
-        return "userHome";
-    }
-
+//
+//    @GetMapping("userHome")
+//    public String displayUserHomePage(Model model, HttpServletRequest request, HttpServletResponse response){
+//        model.addAttribute("user", request.getSession().getAttribute("username"));
+//        return "userHome";
+//    }
+//
 
 
 }

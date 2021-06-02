@@ -14,8 +14,9 @@ public class BookLists extends AbstractEntity{
     @NotBlank(message="Please Name Your Book List")
     private String name;
 
-    @ManyToOne
-    private static List<Book> lists = new ArrayList<>();
+    @ManyToMany
+    @JoinColumn(name="book_id")
+    private static List<Book> listsOfBooks = new ArrayList<>();
 
     @ManyToOne
 //    @JoinColumn(name="user_id")
@@ -35,12 +36,12 @@ public class BookLists extends AbstractEntity{
         this.name = name;
     }
 
-    public static List<Book> getLists() {
-        return lists;
+    public static List<Book> getListsOfBooks() {
+        return listsOfBooks;
     }
 
     public static void setLists(List<Book> lists) {
-        BookLists.lists = lists;
+        BookLists.listsOfBooks = listsOfBooks;
     }
 
     public User getUser() {
@@ -50,11 +51,5 @@ public class BookLists extends AbstractEntity{
     public void setUser(User user) {
         this.user = user;
     }
-//    public static List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public static void setUsers(List<User> users) {
-//        BookLists.users = users;
-//    }
+
 }
