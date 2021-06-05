@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments:: head"></head>
+
+<body>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-center">View All Lists</h1>
+</div>
+
+<div th:replace="fragments:: nav-bar"></div>
+
+<div class="container body-content">
+    <h2>Book Lists</h2>
+    <ul>
+        <li th:each="bookList : ${bookLists}">
+            <a th:href="@{'/bookLists/view/' + ${bookLists.id}}" th:text="${bookList.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/bookLists/add'}">Add Lists</a>
+
+</div>
+
+
+</body>
+</html>

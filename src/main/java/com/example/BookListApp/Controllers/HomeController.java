@@ -1,32 +1,13 @@
 package com.example.BookListApp.Controllers;
 
-import com.example.BookListApp.Models.Author;
-import com.example.BookListApp.Models.Book;
-import com.example.BookListApp.Models.Category;
 import com.example.BookListApp.Models.Data.*;
-import com.example.BookListApp.Models.User;
-import com.example.BookListApp.Models.dto.AuthorFormDTO;
-import com.example.BookListApp.Models.dto.BookFormDTO;
-import com.example.BookListApp.Models.dto.CategoryFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -44,7 +25,7 @@ public class HomeController {
     UserRepository userRepository;
 
     @Autowired
-    private BookListRepository bookListRepository;
+    private BookListsRepository bookListsRepository;
 
 
 

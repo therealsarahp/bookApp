@@ -1,6 +1,6 @@
 package com.example.BookListApp.Controllers;
 
-import com.example.BookListApp.Models.Data.BookListRepository;
+import com.example.BookListApp.Models.Data.BookListsRepository;
 import com.example.BookListApp.Models.Data.BookRepository;
 import com.example.BookListApp.Models.Data.CategoryRepository;
 import com.example.BookListApp.Models.Data.UserRepository;
@@ -14,11 +14,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
@@ -30,7 +27,7 @@ public class AuthenticationController {
     UserRepository userRepository;
 
     @Autowired
-    BookListRepository bookListRepository;
+    BookListsRepository bookListsRepository;
 
     @Autowired
     BookRepository bookRepository;

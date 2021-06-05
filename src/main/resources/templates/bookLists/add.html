@@ -10,19 +10,34 @@
 <div th:replace="fragments:: nav-bar"></div>
 
 <div class="container mt-4">
-    <form id="bookList-form" method="post">
+    <form id="bookLists-form" method="post">
 
         <div class="form-group">
             <label>List Name
-                <input th:field="${bookList.name}" class="form-control">
+                <input th:field="${bookLists.name}" class="form-control">
             </label>
-            <p class="error" th:errors="${bookList.name}"></p>
+            <p class="error" th:errors="${bookLists.name}"></p>
         </div>
 
     </form>
 </div>
 
-//this needs to post and then redirect to an add books page that uses the booklist id (request param)to add/delete books
+<div th:unless="${bookListsId=null}" class="container mt-4">
+    <form id="bookList-add-book" method="post">
+
+        <div class="form-group">
+            //this should be an autofill selection that pulls from bookRepository
+            <label>Book Title
+                <input th:field="${book.name}" class="form-control">
+            </label>
+            <p class="error" th:errors="${book.name}"></p>
+        </div>
+
+    </form>
+</div>
+
+
+<!--//this needs to post and then redirect to an add books page that uses the booklist id (request param)to add/delete books-->
 
 </body>
 </html>

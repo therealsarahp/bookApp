@@ -40,7 +40,7 @@ public class BookLists extends AbstractEntity{
         return listsOfBooks;
     }
 
-    public static void setLists(List<Book> lists) {
+    public static void setListsOfBooks(List<Book> lists) {
         BookLists.listsOfBooks = listsOfBooks;
     }
 
