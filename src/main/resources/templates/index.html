@@ -20,7 +20,7 @@
         </thead>
         <tr th:each="book : ${books}">
             <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
+            <td th:text="${book.author.name}"></td>
             <td th:if="${book.category} == null">N/A</td>
             <td th:if="${book.category}!=null" th:text="${book.category.name}">N/A</td>
         </tr>

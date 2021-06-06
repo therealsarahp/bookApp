@@ -49,7 +49,7 @@ public class BookController {
             return "books/add";
         } else{
             Book newBook = new Book(bookFormDTO.getTitle(), bookFormDTO.getAuthor());
-//            newBook.setCategory(bookFormDTO.getCategory());
+            newBook.setCategory(bookFormDTO.getCategory());
             bookRepository.save(newBook);
             return "redirect:";
 

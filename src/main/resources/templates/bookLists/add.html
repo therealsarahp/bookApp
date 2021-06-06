@@ -18,21 +18,7 @@
             </label>
             <p class="error" th:errors="${bookLists.name}"></p>
         </div>
-
-    </form>
-</div>
-
-<div th:unless="${bookListsId=null}" class="container mt-4">
-    <form id="bookList-add-book" method="post">
-
-        <div class="form-group">
-            //this should be an autofill selection that pulls from bookRepository
-            <label>Book Title
-                <input th:field="${book.name}" class="form-control">
-            </label>
-            <p class="error" th:errors="${book.name}"></p>
-        </div>
-
+        <input type="submit" value="ADD LIST" class="btn btn-primary btn-block">
     </form>
 </div>
 

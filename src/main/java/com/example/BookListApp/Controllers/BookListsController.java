@@ -10,6 +10,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("bookLists")
@@ -45,8 +47,7 @@ public class BookListsController {
     }
 
     @PostMapping("add")
-    public String processAddBookList(@ModelAttribute @Valid BookLists bookLists, Errors errors, Model model,
-                                     @RequestParam int bookListId, @ModelAttribute @Valid Book book) {
+    public String processAddBookList(@ModelAttribute @Valid BookLists bookLists, Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "bookLists/add";
         }
@@ -58,12 +59,26 @@ public class BookListsController {
         } else {
             BookLists newBookLists = new BookLists(bookLists.getName());
             bookListsRepository.save(newBookLists);
-            bookListId = newBookLists.getId();
-            return "redirect:/add/${bookListId}";
+            return "bookLists/addBooks";
+        }
+    }
 
+    @GetMapping("addBooks")
+    public String viewAddBooksToList(Model model) {
+        model.addAttribute("books", bookRepository.findAll());
+        model.addAttribute("bookList", bookListsRepository.findAll());
+        return "bookLists/addBooks";
+    }
 
+    @PostMapping("addBooks")
+    public String processAddBooksToList(@RequestParam int bookListId, @RequestParam List<Integer> booksToAdd, Model model) {
+        model.addAttribute("books", bookRepository.findAll());
+
+            BookLists bookList = bookListsRepository.findById(bookListId).orElse(new BookLists());
+            bookList.setListsOfBooks((List<Book>) bookRepository.findAllById(booksToAdd));
+
+            return "redirect:";
         }
 
 
-    }
 }

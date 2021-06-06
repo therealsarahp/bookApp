@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-center">Add Books To List</h1>
+</div>
+<div th:replace="fragments:: nav-bar"></div>
+
+<div class="container mt-4">
+    <form id="bookList-add-book" method="post">
+
+        <div class="form-group form-select">
+            <label>BookList</label>
+            <select name="bookListId">
+                <option th:each="bookLists : ${bookList}"
+                        th:text="${bookLists.name}"
+                        th:value="${bookLists.id}">
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label th:for="booksToAdd">Books To Add</label>
+            <th:block th:each="book : ${books}">
+                <input type="checkbox" name="booksToAdd" th:value="${book.id}">
+                <label th:text="${book.title}"></label>
+            </th:block>
+            <a th:href="@{'/books/add'}">Add Books</a>
+        </div>
+<!--            <p class="error" th:errors="${book.name}"></p>-->
+
+        <input type="submit" value="ADD BOOK TO LIST" class="btn btn-primary btn-block">
+
+    </form>
+</div>
+
+
+</body>
+</html>

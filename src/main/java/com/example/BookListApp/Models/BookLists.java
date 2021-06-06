@@ -16,7 +16,7 @@ public class BookLists extends AbstractEntity{
 
     @ManyToMany
     @JoinColumn(name="book_id")
-    private static List<Book> listsOfBooks = new ArrayList<>();
+    private List<Book> listsOfBooks = new ArrayList<>();
 
     @ManyToOne
 //    @JoinColumn(name="user_id")
@@ -36,12 +36,12 @@ public class BookLists extends AbstractEntity{
         this.name = name;
     }
 
-    public static List<Book> getListsOfBooks() {
+    public List<Book> getListsOfBooks() {
         return listsOfBooks;
     }
 
-    public static void setListsOfBooks(List<Book> lists) {
-        BookLists.listsOfBooks = listsOfBooks;
+    public void setListsOfBooks(List<Book> listsOfBooks) {
+        this.listsOfBooks = listsOfBooks;
     }
 
     public User getUser() {

@@ -123,7 +123,7 @@ public class AuthenticationController {
 
 //        request.getSession().setAttribute("username", theUser);
         setUserInSession(request.getSession(), theUser);
-        return "redirect:index";
+        return "index";
 
     }
 
